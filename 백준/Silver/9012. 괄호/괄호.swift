@@ -1,16 +1,24 @@
 import Foundation
 var n = readLine()
-var resultArray: [String] = []
 
 for _ in 1...(Int(n ?? "") ?? 0) {
-    if var inputPS = readLine() {
-        while inputPS.contains("()") == true {
-            inputPS = inputPS.replacingOccurrences(of: "()", with: "")
+    var stack: [String] = []
+    var isPS: Bool = true
+    if let inputPS = readLine() {
+        for i in inputPS {
+            if i == "(" {
+                stack.append(String(i))
+            } else {
+                if stack.isEmpty == true {
+                    isPS = false
+                    break
+                } else {
+                    stack.popLast()
+                    isPS = true
+                }
+                
+            }
         }
-        inputPS.isEmpty == true ? resultArray.append("YES") : resultArray.append("NO")
+        isPS == true && stack.isEmpty == true ? print("YES") : print("NO")
     }
-}
-
-for result in resultArray {
-    print(result)
 }
