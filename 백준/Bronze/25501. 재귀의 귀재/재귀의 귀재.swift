@@ -20,7 +20,7 @@ func recursion(_ s: [String], _ l: Int, _ r: Int) -> Int {
     count += 1
     if l >= r {
         return 1
-    } else if s[s.index(s.startIndex, offsetBy: l)] != s[s.index(s.startIndex, offsetBy: r)] {
+    } else if s[l] != s[r] {
         return 0
     } else {
         return recursion(s, l + 1, r - 1)
