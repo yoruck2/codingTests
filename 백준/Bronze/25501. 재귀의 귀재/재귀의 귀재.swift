@@ -1,24 +1,32 @@
-import Foundation
+var count = 0
+var input = Int(readLine()!)!
 
-let n = Int(readLine()!)!
-var recCount = 0
-
-for _ in 1...n {
-    let string = readLine()!
-    let s = string.map { String($0) }
-    recCount = 0
+for _ in 1...input {
+   
+    let toinput = readLine()!
+    let a = toinput.map {String($0)}
+    count = 0
     
-    recurrsion(s: s, f: 0, r: s.count - 1) ? print("1 \(recCount)") : print("0 \(recCount)")
+    
+    if isPalindrome(a) == true {
+        print(1, count)
+    } else {
+        print(0, count)
+    }
     
 }
 
-func recurrsion(s: [String], f: Int, r: Int) -> Bool {
-    recCount += 1
-    if f >= r {
-        return true
-    } else if s[f] == s[r] {
-        return recurrsion(s: s, f: f + 1, r: r - 1)
+func recursion(_ s: [String], _ l: Int, _ r: Int) -> Int {
+    count += 1
+    if l >= r {
+        return 1
+    } else if s[s.index(s.startIndex, offsetBy: l)] != s[s.index(s.startIndex, offsetBy: r)] {
+        return 0
     } else {
-        return false
+        return recursion(s, l + 1, r - 1)
     }
+}
+
+func isPalindrome(_ s: [String]) -> Bool {
+    return recursion(s, 0, s.count - 1) == 1
 }
