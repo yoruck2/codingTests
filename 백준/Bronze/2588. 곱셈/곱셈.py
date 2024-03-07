@@ -1,17 +1,13 @@
 import sys
 input = sys.stdin.readline
 
-import math
 a = int(input())
 b = int(input())
-mmm = math.trunc((b / 100)) * 100
-mm = math.trunc((b-mmm) / 10) * 10
-m = (b-mm-mmm)
 
-num3 = a * m
-num4 = int(a * mm / 10)
-num5 = int(a * mmm / 100)
-num6 = num3 + (a * mm) + (a * mmm)
+num3 = a * (b % 10)
+num4 = a * (b % 100 // 10)
+num5 = a * (b // 100)
+num6 = a * b
 
 print(num3)
 print(num4)
