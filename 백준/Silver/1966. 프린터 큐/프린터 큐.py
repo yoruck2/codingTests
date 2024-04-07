@@ -14,7 +14,7 @@ for _ in range(TC):
     count = 0
 
     while True:
-        if docs[0][0] == max(docs, key=lambda x:x[0])[0]:
+        if docs[0][0] == max(docs)[0]:
             count += 1
             if docs[0][1] == M:
                 print(count)
